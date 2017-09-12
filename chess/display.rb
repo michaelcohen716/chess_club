@@ -28,21 +28,22 @@ class Display
   end
 
   def determine_colors(player, current_cursor_on, selected)
-    hsh = {}
+    hsh = {:color => :dark_blue}
 
-    if player == :white
-      hsh[:color] = :dark_blue
-    else
-      hsh[:color] = :red
-    end
+    # if player == :white
+    #   hsh[:color] = :dark_blue
+    # else
+    #   hsh[:color] = :red
+    # end
 
     if current_cursor_on && selected
       hsh[:background] = :green
     elsif current_cursor_on
       hsh[:background] = :light_magenta
-    else
-      hsh[:background] = :white
     end
+    # else
+    #   hsh[:background] = :white
+    # end
     hsh
   end
 
@@ -59,7 +60,7 @@ class Display
       #   hsh = COLOR_HASH
       # end
       print piece.to_s.colorize(color_hsh)
-      print "|".colorize(:color => :dark_blue, :background => :white)
+      print "|".colorize(:color => :dark_blue)
     end
   end
 

@@ -13,6 +13,10 @@ class King < Piece
   end
 
   def to_s
-    "K"
+    if self.player == :white
+      "\u2654".encode('utf-8')
+    else
+      "\u265A".encode('utf-8')
+    end
   end
 end

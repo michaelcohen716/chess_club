@@ -13,6 +13,10 @@ class Rook < Piece
   end
 
   def to_s
-    "R"
+    if self.player == :white
+      "\u2656".encode('utf-8')
+    else
+      "\u265C".encode('utf-8')
+    end
   end
 end
