@@ -12,4 +12,7 @@ class Rook < Piece
     return [[0,1],[0,-1], [1,0], [-1,0]]
   end
 
+  def to_s
+    "R"
+  end
 end

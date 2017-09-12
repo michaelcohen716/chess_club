@@ -33,15 +33,39 @@ class Board
     (0...num_rows).each do |row|
       (0...num_cols).each do |col|
         pos = [row, col]
-        if row < 2
-          self[pos] = Piece.new("player1", pos, self)
-        elsif row > 5
-          self[pos] = Piece.new("player2", pos, self)
+        if row == 0
+          player = "player1"
+          self.populate_back_row(player, row)
+        elsif row == 1
+          player = "player1"
+          self[pos] = Piece.new(player, pos, self)
+        elsif row == 6
+          player = "player2"
+          self[pos] = Piece.new(player, pos, self)
+        elsif row == 7
+          player = "player2"
+          self.populate_back_row(player, row)
         else
           self[pos] = NullPiece.new
         end
       end
     end
+  end
+
+  def populate_back_row(player, row)
+    (0..7).each do |col|
+
+      pos = [row, col]
+      self[pos] = Rook.new(player, pos, self) if col == 0 || col == 7
+      self[pos] = Knight.new(player, pos, self) if col == 1 || col == 6
+      self[pos] = Bishop.new(player, pos, self) if col == 2 || col == 5
+      # self[pos] = Queen.new(player, pos, self) if col == 3
+      # self[pos] = King.new(player, pos, self) if col == 4
+    end
+    row == 0 ? self[[row,3]] = King.new(player,[row,3], self) : self[[row,3]] = Queen.new(player,[row,3], self)
+    row == 0 ? self[[row,4]] = Queen.new(player,[row,4], self) : self[[row,4]] = King.new(player,[row,4], self)
+    row == 7 ? self[[row,3]] = Queen.new(player,[row,3], self) : self[[row,3]] = King.new(player,[row,3], self)
+    row == 7 ? self[[row,4]] = King.new(player,[row,4], self) : self[[row,4]] = Queen.new(player,[row,4], self)
   end
 
   def [](pos)
@@ -73,15 +97,15 @@ class Board
   end
 end
 
-if __FILE__ == $PROGRAM_NAME
-  board = Board.standard_board
-  # rook1 = Rook.new("player1", [4,4], board)
-  # #board[[4,1]] = Rook.new("player1", [4,1], board)
-  # x = rook1.moves(true, false)
-  # puts x
-
-  knight = Knight.new("player1", [2,2], board)
-  s = knight.moves
-  puts s
-
-end
+# if __FILE__ == $PROGRAM_NAME
+#   # board = Board.standard_board
+#   # # rook1 = Rook.new("player1", [4,4], board)
+#   # # #board[[4,1]] = Rook.new("player1", [4,1], board)
+#   # # x = rook1.moves(true, false)
+#   # # puts x
+#   #
+#   # knight = Knight.new("player1", [2,2], board)
+#   # s = knight.moves
+#   # puts s
+#
+# end

@@ -50,6 +50,7 @@ class Display
     print "|"
     row.each_with_index do |piece, col_number|
       current_cursor_on = self.cursor.cursor_pos == [row_number, col_number]
+      #debugger
       color_hsh = determine_colors(piece.player, current_cursor_on, self.cursor.selected)
 
       # if self.cursor.cursor_pos == [row_number, col_number]
@@ -64,11 +65,11 @@ class Display
 
 end
 
-# if __FILE__ == $PROGRAM_NAME
-#   board = Board.standard_board
-#   display = Display.new(board)
-#   while true
-#     #system("clear")
-#     display.test_display
-#   end
-# end
+if __FILE__ == $PROGRAM_NAME
+  board = Board.standard_board
+  display = Display.new(board)
+  while true
+    #system("clear")
+    display.test_display
+  end
+end

@@ -12,4 +12,8 @@ class Bishop < Piece
     return [[1,1],[-1,-1], [1,-1], [-1,1]]
   end
 
+  def to_s
+    "B"
+  end
+
 end
