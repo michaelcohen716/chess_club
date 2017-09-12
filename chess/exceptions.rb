@@ -6,3 +6,6 @@ end
 
 class NonValidMoveError < StandardError
 end
+
+class NotYourPieceError < StandardError
+end

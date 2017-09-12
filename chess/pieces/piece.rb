@@ -1,3 +1,5 @@
+require 'singleton'
+
 class Piece
   attr_reader :player, :board
   attr_accessor :position
@@ -38,8 +40,10 @@ class Piece
 end
 
 class NullPiece < Piece
+  include Singleton
+
   def initialize
-    @player = "None"
+
   end
 
   def to_s

@@ -19,7 +19,7 @@ class Display
   end
 
   def render
-    #system("clear")
+    system("clear")
     self.board.grid.each_with_index do |row, row_number|
       self.render_row(row, row_number)
       print "\n"
@@ -30,7 +30,7 @@ class Display
   def determine_colors(player, current_cursor_on, selected)
     hsh = {}
 
-    if player == "player1"
+    if player == :white
       hsh[:color] = :dark_blue
     else
       hsh[:color] = :red
@@ -59,17 +59,8 @@ class Display
       #   hsh = COLOR_HASH
       # end
       print piece.to_s.colorize(color_hsh)
-      print "|".colorize(COLOR_HASH)
+      print "|".colorize(:color => :dark_blue, :background => :white)
     end
   end
 
-end
-
-if __FILE__ == $PROGRAM_NAME
-  board = Board.standard_board
-  display = Display.new(board)
-  while true
-    #system("clear")
-    display.test_display
-  end
 end

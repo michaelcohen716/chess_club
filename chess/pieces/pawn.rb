@@ -14,12 +14,12 @@ class Pawn < Piece
     moves = []
     current_row, current_col = self.position
     if !self.first_move
-      self.player == "player1" ? possible_moves = [[1,0]] : possible_moves = [[-1,0]]
+      self.player == :white ? possible_moves = [[1,0]] : possible_moves = [[-1,0]]
     else
-      self.player == "player1" ? possible_moves = [[1,0], [2,0]] : possible_moves = [[-2, 0],[-1,0]]
+      self.player == :white ? possible_moves = [[1,0], [2,0]] : possible_moves = [[-2, 0],[-1,0]]
     end
 
-    self.player == "player1" ? attacks = [[1,1],[1,-1]] : attacks = [[-1,1],[-1,-1]]
+    self.player == :white ? attacks = [[1,1],[1,-1]] : attacks = [[-1,1],[-1,-1]]
 
     possible_moves.each do |move|
       new_pos = [current_row + move[0], current_col + move[1]]
