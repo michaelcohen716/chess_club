@@ -1,7 +1,7 @@
 require_relative 'piece'
 require_relative 'sliding_module'
 
-class Rook < Piece
+class Bishop < Piece
   include SlidingPiece
 
   def initialize(player, position, board)
@@ -9,7 +9,7 @@ class Rook < Piece
   end
 
   def move_dirs
-    return [[0,1],[0,-1], [1,0], [-1,0]]
+    return [[1,1],[-1,-1], [1,-1], [-1,1]]
   end
 
 end

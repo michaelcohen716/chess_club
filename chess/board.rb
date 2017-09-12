@@ -1,6 +1,11 @@
 require_relative "pieces/piece"
 require_relative "pieces/rook"
+require_relative "pieces/bishop"
+require_relative "pieces/queen"
 require_relative "exceptions"
+require_relative "pieces/king"
+require_relative "pieces/knight"
+
 
 class Board
 
@@ -75,8 +80,8 @@ if __FILE__ == $PROGRAM_NAME
   # x = rook1.moves(true, false)
   # puts x
 
-  rook1 = Rook.new("player1", [4,4], board)
-  s = rook1.moves
+  knight = Knight.new("player1", [2,2], board)
+  s = knight.moves
   puts s
 
 end
