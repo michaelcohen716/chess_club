@@ -13,9 +13,18 @@ class Piece
     "P"
   end
 
-  def moves
+  def valid_moves
+    #debugger
+    self.moves.reject {|end_pos| self.move_into_check?(end_pos)}
   end
 
+  def move_into_check?(end_pos)
+    dup_board = self.board.dup_board
+
+    dup_board.move_piece!(self.position, end_pos)
+
+    dup_board.in_check?(self.player)
+  end
 
   def eval_other_piece(other_piece)
     if other_piece.class == NullPiece
@@ -30,7 +39,7 @@ end
 
 class NullPiece < Piece
   def initialize
-
+    @player = "None"
   end
 
   def to_s

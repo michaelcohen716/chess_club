@@ -1,4 +1,4 @@
-require_relative 'board'
+#require_relative 'board'
 require_relative 'cursor'
 require 'colorize'
 
@@ -19,7 +19,7 @@ class Display
   end
 
   def render
-    system("clear")
+    #system("clear")
     self.board.grid.each_with_index do |row, row_number|
       self.render_row(row, row_number)
       print "\n"
