@@ -1,5 +1,3 @@
-require 'byebug'
-
 require_relative "board"
 require_relative "display"
 require_relative "human_player"
@@ -27,14 +25,7 @@ class Game
     puts "#{self.current_player.color} is in checkmate. #{self.previous_player.color} is the winner!"
   end
 
-  # def play_turn
-  #   start_pos = nil
-  #   end_pos = nil
-  #
-  #   until !start_pos.nil? && !end_pos.nil?
-  #     self.current_player.get_input
-  #   end
-  # end
+
 
   def switch_players
     if self.current_player == self.player1
