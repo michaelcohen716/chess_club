@@ -1,6 +1,5 @@
 module SlidingPiece
 
-
   def get_moves_one_direction(possible_positions)
     moves = []
     possible_positions.each do |pos|
@@ -41,7 +40,5 @@ module SlidingPiece
     end
     potential_positions
   end
-
-
 
 end

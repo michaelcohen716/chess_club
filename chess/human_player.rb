@@ -16,6 +16,7 @@ class HumanPlayer
     self.color.to_s
   end
 
+
   def play_turn(display, board)
     begin
       display.render
@@ -33,36 +34,32 @@ class HumanPlayer
         elsif cursor_return.class == Array && !display.cursor.selected
           end_pos = cursor_return
         end
-      end
 
+      end
 
       self.check_piece_is_mine(start_pos, board)
       board.move_piece(start_pos, end_pos)
 
-    rescue NoPieceError => npe
-      puts npe.message
-      sleep(1)
-      retry
+      rescue NoPieceError => npe
+        puts npe.message
+        sleep(1)
+        retry
 
-    rescue NonExistentPosError => nepe
-      puts nepe.message
-      sleep(1)
-      retry
+      rescue NonExistentPosError => nepe
+        puts nepe.message
+        sleep(1)
+        retry
 
-    rescue NonValidMoveError => nvme
-      puts nvme.message
-      sleep(1)
-      retry
+      rescue NonValidMoveError => nvme
+        puts nvme.message
+        sleep(1)
+        retry
 
-    rescue NotYourPieceError => nype
-      puts nype.message
-      sleep(1)
-      retry
+      rescue NotYourPieceError => nype
+        puts nype.message
+        sleep(1)
+        retry
     end
 
   end
-
-
-
-
 end

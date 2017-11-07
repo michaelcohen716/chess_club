@@ -7,6 +7,7 @@ require_relative "pieces/knight"
 require_relative "pieces/pawn"
 require_relative "exceptions"
 require_relative "display"
+require 'byebug'
 
 class Board
 
@@ -67,6 +68,7 @@ class Board
   end
 
   def [](pos)
+    # pos.flatten
     row, col  = pos
     return nil if row < 0 || row > 7 || col < 0 || col > 7
     @grid[row][col]
@@ -86,14 +88,15 @@ class Board
   end
 
   def move_piece(start_pos, end_pos)
-
     raise NoPieceError.new("There is no piece at the start position") if self[start_pos].class == NullPiece
     raise NonExistentPosError.new("End Position doesn't exist") if self[end_pos].nil?
     raise NonValidMoveError.new("Not valid move for this piece") if !self[start_pos].valid_moves.include?(end_pos)
 
+    en_passant?(start_pos, end_pos)
+
     self[end_pos] = self[start_pos]
     self[start_pos] = NullPiece.instance
-    self[end_pos].first_move = false if self[end_pos].class == Pawn
+    self[end_pos].num_moves +=1 if self[end_pos].class == Pawn
     self[end_pos].position = end_pos
   end
 
@@ -101,10 +104,29 @@ class Board
     raise NoPieceError.new("There is no piece at the start position") if self[start_pos].class == NullPiece
     raise NonExistentPosError.new("End Position doesn't exist") if self[end_pos].nil?
 
+    en_passant?(start_pos, end_pos)
+
     self[end_pos] = self[start_pos]
     self[start_pos] = NullPiece.instance
-    self[end_pos].first_move = false if self[end_pos].class == Pawn
+    self[end_pos].num_moves +=1 if self[end_pos].class == Pawn
     self[end_pos].position = end_pos
+  end
+
+  def en_passant?(start_pos, end_pos)
+    start_col = start_pos.last
+    end_col = end_pos.last
+
+    if self[start_pos].class == Pawn && (end_col - start_col != 0)
+      en_passant = true if self[end_pos].class == NullPiece
+    end
+
+    if en_passant == true
+      row_difference = self[start_pos].player == :white ? -1 : 1
+      row, col = end_pos
+      new_empty = [row + row_difference, col]
+      self[new_empty] = NullPiece.instance
+      debugger
+    end
   end
 
   def in_check?(player)
@@ -120,7 +142,7 @@ class Board
 
   def checkmate?(player)
     my_pieces = self.grid.flatten.select {|piece| piece.player == player }
-  
+
     my_pieces.each do |piece|
       return false if !piece.valid_moves.empty?
     end
