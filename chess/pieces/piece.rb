@@ -16,7 +16,6 @@ class Piece
   end
 
   def valid_moves
-    #debugger
     self.moves.reject {|end_pos| self.move_into_check?(end_pos)}
   end
 

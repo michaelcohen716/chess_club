@@ -108,13 +108,4 @@ class Cursor
 
   end
 
-  # def update_pos(diff)
-  #   x, y = diff
-  #   new_pos = [cursor_pos[0] + x, cursor_pos[1] + y]
-  #   if self.board.in_board?(new_pos)
-  #     self.cursor_pos = new_pos
-  #   end
-  # end
-
-
 end

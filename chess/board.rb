@@ -86,7 +86,7 @@ class Board
   end
 
   def move_piece(start_pos, end_pos)
-    #debugger
+
     raise NoPieceError.new("There is no piece at the start position") if self[start_pos].class == NullPiece
     raise NonExistentPosError.new("End Position doesn't exist") if self[end_pos].nil?
     raise NonValidMoveError.new("Not valid move for this piece") if !self[start_pos].valid_moves.include?(end_pos)
@@ -120,7 +120,7 @@ class Board
 
   def checkmate?(player)
     my_pieces = self.grid.flatten.select {|piece| piece.player == player }
-    #debugger
+  
     my_pieces.each do |piece|
       return false if !piece.valid_moves.empty?
     end

@@ -2,7 +2,6 @@ require_relative "board"
 require_relative "display"
 require_relative "human_player"
 
-
 class Game
 
   attr_accessor :player1, :player2, :current_player, :previous_player, :board
@@ -25,8 +24,6 @@ class Game
     puts "#{self.current_player.color} is in checkmate. #{self.previous_player.color} is the winner!"
   end
 
-
-
   def switch_players
     if self.current_player == self.player1
       self.current_player = self.player2
@@ -40,7 +37,6 @@ class Game
   def game_over?
     @board.checkmate?(@current_player.color)
   end
-
 
 end
 
