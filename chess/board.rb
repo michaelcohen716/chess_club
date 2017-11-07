@@ -68,7 +68,6 @@ class Board
   end
 
   def [](pos)
-    # pos.flatten
     row, col  = pos
     return nil if row < 0 || row > 7 || col < 0 || col > 7
     @grid[row][col]

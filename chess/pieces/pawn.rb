@@ -32,10 +32,7 @@ class Pawn < Piece
     end
     special_moves = []
     special_moves << en_passant if en_passant
-    # if special_moves != [] && special_moves != [nil]
-      moves.concat(special_moves)
-    # end
-    # debugger
+    moves.concat(special_moves)
     moves.reject {|move| move == [nil]}
   end
 
