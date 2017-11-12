@@ -124,7 +124,6 @@ class Board
       row, col = end_pos
       new_empty = [row + row_difference, col]
       self[new_empty] = NullPiece.instance
-      debugger
     end
   end
 
