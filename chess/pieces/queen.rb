@@ -14,9 +14,9 @@ class Queen < Piece
 
   def to_s
     if self.player == :white
-      "\u2655".encode('utf-8')
+      " " + "\u2655".encode('utf-8') + " "
     else
-      "\u265B".encode('utf-8')
+      " " + "\u265B".encode('utf-8') + " "
     end
   end
 

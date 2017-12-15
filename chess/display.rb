@@ -1,5 +1,6 @@
 require_relative 'cursor'
 require 'colorize'
+require 'byebug'
 
 class Display
   attr_reader :board, :cursor
@@ -26,7 +27,6 @@ class Display
 
   def determine_colors(player, current_cursor_on, selected)
     hsh = {:color => :dark_blue}
-
     if current_cursor_on && selected
       hsh[:background] = :green
     elsif current_cursor_on
@@ -42,7 +42,6 @@ class Display
       current_cursor_on = self.cursor.cursor_pos == [row_number, col_number]
 
       color_hsh = determine_colors(piece.player, current_cursor_on, self.cursor.selected)
-
       print piece.to_s.colorize(color_hsh)
       print "|".colorize(:color => :dark_blue)
     end

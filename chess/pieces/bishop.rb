@@ -14,9 +14,9 @@ class Bishop < Piece
 
   def to_s
     if self.player == :white
-      "\u2657".encode('utf-8')
+      " " + "\u2657".encode('utf-8') + " "
     else
-      "\u265D".encode('utf-8')
+      " " + "\u265D".encode('utf-8') + " "
     end
   end
 

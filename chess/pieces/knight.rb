@@ -14,9 +14,9 @@ class Knight < Piece
 
   def to_s
     if self.player == :white
-      "\u2658".encode('utf-8')
+      " " + "\u2658".encode('utf-8') + " "
     else
-      "\u265E".encode('utf-8')
+      " " + "\u265E".encode('utf-8') + " "
     end
   end
 end

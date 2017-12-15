@@ -65,9 +65,9 @@ class Pawn < Piece
 
   def to_s
     if self.player == :white
-      "\u2659".encode('utf-8')
+      " " + "\u2659".encode('utf-8') + " "
     else
-      "\u265F".encode('utf-8')
+      " " + "\u265F".encode('utf-8') + " "
     end
   end
 
